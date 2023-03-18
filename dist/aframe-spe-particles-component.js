@@ -2413,7 +2413,7 @@ SPE.Group = function( options ) {
     options.texture = utils.ensureTypedArg( options.texture, types.OBJECT, {} );
 
     // Assign a UUID to this instance
-    this.uuid = THREE.Math.generateUUID();
+    this.uuid = THREE.MathUtils.generateUUID();
 
     // If no `deltaTime` value is passed to the `SPE.Group.tick` function,
     // the value of this property will be used to advance the simulation.
@@ -2629,7 +2629,7 @@ SPE.Group.prototype._applyAttributesToGeometry = function() {
 
             // // Add the attribute to the geometry if it doesn't already exist.
             else {
-                geometry.addAttribute( attr, attribute.bufferAttribute );
+                geometry.setAttribute( attr, attribute.bufferAttribute );
             }
 
             // Mark the attribute as needing an update the next time a frame is rendered.
@@ -3273,7 +3273,7 @@ SPE.Emitter = function( options ) {
         console.warn( 'onParticleSpawn has been removed. Please set properties directly to alter values at runtime.' );
     }
 
-    this.uuid = THREE.Math.generateUUID();
+    this.uuid = THREE.MathUtils.generateUUID();
 
     this.type = utils.ensureTypedArg( options.type, types.NUMBER, SPE.distributions.BOX );
 
