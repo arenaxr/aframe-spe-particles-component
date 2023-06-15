@@ -20,9 +20,11 @@
   ],
   "repository": "github:harlyq/aframe-spe-particles-component",
   "license": "MIT",
-  "devDependencies": {},
   "peerDependencies": {
-    "aframe": "^0.8.0"
+    "aframe": "^1.4.2"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "uglifyjs": "^2.4.11"
+  }
 }
