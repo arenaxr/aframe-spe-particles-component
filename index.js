@@ -27,7 +27,7 @@ AFRAME.registerComponent("spe-particles", {
       default: false,
       description: "enable/disable frustum culling",
     },
-  
+
     // GROUP ATTRIBUTES
     texture: {
       type: "map",
@@ -88,7 +88,7 @@ AFRAME.registerComponent("spe-particles", {
       default: 100,
       description: "global scaling factor for all particles from the emitter",
     },
-  
+
     // EMITTER ATTRIBUTES
     relative: {
       default: "local",
@@ -313,7 +313,7 @@ AFRAME.registerComponent("spe-particles", {
       description: "if true, re-randomize angle when re-spawning a particle, can incur a performance hit",
     },
   },
-  
+
   multiple: true,
 
   init: function () {
@@ -322,7 +322,7 @@ AFRAME.registerComponent("spe-particles", {
     this.pauseTickId = undefined
     this.emitterID = uniqueEmitterID++
     this.pauseTick = this.pauseTick.bind(this)
-    this.defaultTexture = new THREE.DataTexture(new Uint8Array(3).fill(255), 1, 1, THREE.RGBFormat)
+    this.defaultTexture = new THREE.DataTexture(new Uint8Array(4).fill(255), 1, 1, THREE.RGBAFormat)
     this.defaultTexture.needsUpdate = true
   },
 
@@ -378,7 +378,7 @@ AFRAME.registerComponent("spe-particles", {
   },
 
   pauseTick: function() {
-    this.tickParticleSystem(33) 
+    this.tickParticleSystem(33)
     this.pauseTickId = setTimeout(this.pauseTick, 33)
   },
 
@@ -532,7 +532,7 @@ function diff(a, b) {
   for (let k of keys) {
     let av = a[k]
     let bv = b[k]
-    let isObj = av && bv && ( (av.constructor == Object && bv.constructor === Object) || 
+    let isObj = av && bv && ( (av.constructor == Object && bv.constructor === Object) ||
       (Array.isArray(av) && Array.isArray(bv)) )
 
     if ((isObj && !AFRAME.utils.deepEqual(av, bv)) || (!isObj && av !== bv)) {
