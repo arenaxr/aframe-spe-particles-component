@@ -21,7 +21,7 @@
   "repository": "github:harlyq/aframe-spe-particles-component",
   "license": "MIT",
   "peerDependencies": {
-    "aframe": "^1.4.2"
+    "aframe": "^1.6.0"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
