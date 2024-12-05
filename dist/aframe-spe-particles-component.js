@@ -1063,11 +1063,9 @@ SPE.ShaderAttribute.prototype.setUpdateRange = function( min, max ) {
 SPE.ShaderAttribute.prototype.flagUpdate = function() {
 	'use strict';
 
-	var attr = this.bufferAttribute,
-		range = attr.updateRange;
+    const attr = this.bufferAttribute;
+    attr.addUpdateRange( this.updateMin, Math.min( ( this.updateMax - this.updateMin ) + this.componentSize, this.typedArray.array.length ) );
 
-	range.offset = this.updateMin;
-	range.count = Math.min( ( this.updateMax - this.updateMin ) + this.componentSize, this.typedArray.array.length );
 	// console.log( range.offset, range.count, this.typedArray.array.length );
 	// console.log( 'flagUpdate:', range.offset, range.count );
 	attr.needsUpdate = true;
@@ -1109,8 +1107,7 @@ SPE.ShaderAttribute.prototype.forceUpdateAll = function() {
 	'use strict';
 
 	this.bufferAttribute.array = this.typedArray.array;
-	this.bufferAttribute.updateRange.offset = 0;
-	this.bufferAttribute.updateRange.count = -1;
+	this.bufferAttribute.clearUpdateRanges();
 	this.bufferAttribute.dynamic = false;
 	this.bufferAttribute.needsUpdate = true;
 };
